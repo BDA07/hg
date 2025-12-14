@@ -12,6 +12,12 @@ export const createApp = () => {
   // Initialize database tables
   initDatabase();
 
+  // ✅ ADD THIS ROOT ROUTE HERE
+  app.get('/', (req, res) => {
+    res.send('Sweet Shop Backend is running 🚀');
+  });
+
+  // API routes
   app.use('/api', router);
 
   // Global error handler

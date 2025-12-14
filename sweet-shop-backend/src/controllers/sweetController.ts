@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { SweetService } from '../services/sweetService';
-import { AuthRequest } from '../types'; // Import for type safety on req.user
 
 export class SweetController {
   static createSweet(req: Request, res: Response) {
@@ -63,7 +62,7 @@ export class SweetController {
     }
   }
 
-  static purchaseSweet(req: AuthRequest, res: Response) {
+  static purchaseSweet(req: Request, res: Response) {
     try {
       const sweetId = parseInt(req.params.id);
       if (isNaN(sweetId)) return res.status(400).json({ error: 'Invalid sweet ID' });

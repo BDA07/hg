@@ -20,10 +20,14 @@ export interface Sweet {
 // Note: For AuthRequest in a real Express app with TypeScript, 
 // you'd typically augment the Request type.
 // Since you used 'any' in the middleware, this is a conceptual interface for context.
-export interface AuthRequest extends Request {
-  user?: {
-    id: number;
-    email: string;
-    role: 'USER' | 'ADMIN';
-  };
+import { Request } from 'express';
+
+declare module 'express-serve-static-core' {
+  interface Request {
+    user?: {
+      id: number;
+      email: string;
+      role: 'USER' | 'ADMIN';
+    };
+  }
 }
